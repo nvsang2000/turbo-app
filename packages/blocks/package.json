@@ -1,0 +1,14 @@
+{
+	"name": "@repo/blocks",
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"lint": "eslint .",
+		"format": "prettier --write ."
+	},
+	"exports": {
+		"./styles/*.css": "./src/styles/*.css",
+		"./*": "./src/*.tsx"
+	},
+	"devDependencies": {}
+}

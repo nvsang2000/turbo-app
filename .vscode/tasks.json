@@ -1,0 +1,59 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "install",
+			"type": "shell",
+			"command": "bun install",
+			"problemMatcher": []
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": "bun turbo run clean",
+			"problemMatcher": []
+		},
+		{
+			"label": "dev",
+			"type": "shell",
+			"command": "bun turbo run dev",
+			"problemMatcher": []
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "bun turbo run build",
+			"problemMatcher": []
+		},
+		{
+			"label": "compile",
+			"type": "shell",
+			"command": "bun turbo run compile",
+			"problemMatcher": []
+		},
+		{
+			"label": "test",
+			"type": "shell",
+			"command": "bun turbo run test",
+			"problemMatcher": []
+		},
+		{
+			"label": "lint",
+			"type": "shell",
+			"command": "bun turbo run lint",
+			"problemMatcher": []
+		},
+		{
+			"label": "format",
+			"type": "shell",
+			"command": "bun turbo run format",
+			"problemMatcher": []
+		},
+		{
+			"label": "doc",
+			"type": "shell",
+			"command": "bun turbo run doc",
+			"problemMatcher": []
+		}
+	]
+}

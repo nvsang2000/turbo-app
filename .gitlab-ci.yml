@@ -1,0 +1,31 @@
+stages:
+ - build
+ - deploy
+
+generate_docs:
+ stage: build
+ image: node:18
+ variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+ before_script:
+  - npm install -g bun
+  - bun install
+ script:
+  - mkdir -p build/docs
+  - bun run doc
+  - cp -r docs/dist/* build/docs/
+ artifacts:
+  paths:
+   - build
+  expire_in: 1 hour
+
+pages:
+ stage: deploy
+ script:
+  - mkdir -p public
+  - cp -r build/docs/* public/
+ artifacts:
+  paths:
+   - public
+ only:
+  - main

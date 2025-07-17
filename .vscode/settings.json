@@ -1,0 +1,19 @@
+{
+	"files.exclude": {
+		"tmp": true,
+		"declare": true,
+		"dist": true,
+		"build": true,
+		"node_modules": true,
+		".turbo": true,
+		"bun.lock": true,
+		"**/node_modules": true,
+		"**/dist": true,
+		"**/build": true,
+		"**/.turbo": true
+	},
+	"files.watcherExclude": {
+		"node_modules": true
+	},
+	"tailwindCSS.experimental.configFile": "packages/ui/src/styles/globals.css"
+}

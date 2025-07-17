@@ -1,0 +1,15 @@
+[submodule "apps/system-dashboard"]
+	path = apps/system-dashboard
+	url = https://gitlab.azcpos.work/azcloudsystem/apps/system-dashboard.git
+[submodule "apps/example-ui"]
+	path = apps/example-ui
+	url = https://gitlab.azcpos.work/azcloudsystem/apps/example-ui.git
+[submodule "domains/shared/example-service"]
+	path = domains/shared/example-service
+	url = https://gitlab.azcpos.work/azcloudsystem/domains/shared/example-service.git
+[submodule "domains/system/account-service"]
+	path = domains/system/account-service
+	url = https://gitlab.azcpos.work/azcloudsystem/domains/system/account-service.git
+[submodule "docs"]
+	path = docs
+	url = https://gitlab.azcpos.work/azcloudsystem/docs.git
