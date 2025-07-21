@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  editor-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+      args:
+        APP_NAME: editor-service
+    ports:
+      - "35000:3000"
+
+  form-pdf-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+      args:
+        APP_NAME: form-pdf-ui
+    ports:
+      - "35500:3000"
