@@ -1,5 +1,5 @@
 {
-	"name": "api",
+	"name": "editor-service",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",

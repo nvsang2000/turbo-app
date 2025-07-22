@@ -1,0 +1,181 @@
+/* =============================================================================
+   LAYOUT GRID VÀ CÁC CỘT
+   ============================================================================= */
+
+/* Container grid với 2 cột */
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Mỗi cột */
+.layout-col {
+  position: relative; /* để chứa absolute children như nút, menu */
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #fafafa;
+  min-height: 120px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.layout-col:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: #bbb;
+}
+
+/* Cột trống */
+.layout-col.empty {
+  border: 2px dashed #ccc;
+  background: #fff;
+}
+.layout-col.empty .col-button {
+  display: block;
+}
+
+/* Nút “Add Content” / placeholder */
+.layout-col .col-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.layout-col .col-button:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+/* Nút edit (pencil) overlay trên preview */
+.col-edit-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 4px;
+  padding: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 5;
+}
+.col-edit-overlay:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive: <600px chuyển thành 1 cột */
+@media (max-width: 600px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================================================
+   DROPDOWN MENU (COLUMN CONTEXT MENU)
+   ============================================================================= */
+
+.col-menu {
+  position: absolute;
+  top: 36px;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 4px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 9;
+}
+.col-menu.show {
+  opacity: 1;
+  visibility: visible;
+}
+.col-menu button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.col-menu button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* =============================================================================
+   POPUP OVERLAY & CONTAINER (Layout tool)
+   ============================================================================= */
+
+.editor-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.editor-popup {
+  background: #fff;
+  padding: 40px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 100vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Popup actions (Save / Cancel) */
+.popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+.popup-actions button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.popup-cancel {
+  background-color: #e0e0e0;
+  color: #333;
+}
+.popup-cancel:hover {
+  background-color: #d5d5d5;
+}
+.popup-save {
+  background-color: #4caf50;
+  color: #fff;
+}
+.popup-save:hover {
+  background-color: #45a049;
+}

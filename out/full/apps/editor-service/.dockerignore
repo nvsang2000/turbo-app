@@ -1,0 +1,30 @@
+# Node/Bun dependencies
+node_modules
+bun.lock
+bun.lockb
+package-lock.json
+npm-debug.log
+yarn.lock
+pnpm-lock.yaml
+
+# Thư mục build tạm
+dist
+build
+
+# Các file config & CI không cần thiết
+.env
+.env.*.local
+.vscode
+.idea
+.DS_Store
+
+# Git
+.git
+.gitignore
+
+# Logs
+logs
+*.log
+
+# Các thư mục pruned của Turbo
+out

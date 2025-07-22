@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+tmp
+package-lock.json
+bun.lock
+.turbo
+.greenlockrc
+.DS_STORE
