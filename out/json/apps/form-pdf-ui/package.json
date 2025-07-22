@@ -8,7 +8,7 @@
 		"dev": "vite --mode development",
 		"vite-build": "NODE_ENV=production vite build --mode production --outDir ./build/public",
 		"build": "bun run vite-build && NODE_ENV=production bun build src/server.ts --drop debugger --minify --target bun --outdir ./build",
-		"preview": "vite preview --mode production --outDir ./build/public --host 0.0.0.0 --port 4173",
+		"preview": "vite preview --mode production --outDir ./build/public --host 0.0.0.0 --port 35500",
 		"start": "bun run build && bun run preview",
 		"compile": "NODE_ENV=production bun build src/server.ts --compile --drop debugger --minify --target bun --outfile ./dist/server.bun && bun run ../../tools/build-fe.ts",
 		"storybook": "storybook dev -p 6006",
@@ -52,7 +52,9 @@
 		"signature_pad": "^5.0.9",
 		"tailwind-merge": "^3.3.1",
 		"tailwindcss": "^4.1.11",
-		"uuid": "^11.1.0"
+		"uuid": "^11.1.0",
+		"vite": "^6.3.5",
+		"@vitejs/plugin-react": "^4.0.0"
 	},
 	"packageManager": "bun@1.2.0",
 	"engines": {

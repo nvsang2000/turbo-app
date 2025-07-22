@@ -1,25 +1,30 @@
-# —— Stage 1: Prune workspace form-pdf-ui —— 
 FROM oven/bun:latest AS pruner
 WORKDIR /app
 COPY . .
 RUN bunx turbo@^1.9.3 prune form-pdf-ui --docker
 
-# —— Stage 2: Install & Build —— 
 FROM oven/bun:latest AS build
 WORKDIR /app
-# 1) Copy metadata đã prune
+
+# Copy pruned metadata and install deps
 COPY --from=pruner /app/out/json ./
-RUN bun install --locked
-# 2) Copy code đã prune
+RUN rm -f bun.lock bun.lockb package-lock.json yarn.lock pnpm-lock.yaml
+RUN bun install
+
+
+# Copy pruned source
 COPY --from=pruner /app/out/full ./
+
+# ✅ FIX: Restore vite.config.ts manually (pruned out)
+COPY apps/form-pdf-ui/vite.config.ts /app/apps/form-pdf-ui/vite.config.ts
+
 WORKDIR /app/apps/form-pdf-ui
 RUN bun run build
 
-# —— Stage 3: Serve with Nginx —— 
-FROM nginx:alpine AS runner
-# Xoá nội dung cũ
-RUN rm -rf /usr/share/nginx/html/*
-# Copy build output đúng folder (build/public trong trường hợp của bạn)
-COPY --from=build /app/apps/form-pdf-ui/build/public /usr/share/nginx/html
+FROM oven/bun:latest AS runner
+WORKDIR /app
+
+COPY --from=build /app/apps/form-pdf-ui .
+
 EXPOSE 35500
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["bun", "run", "preview"]
